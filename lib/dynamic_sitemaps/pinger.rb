@@ -32,7 +32,7 @@ module DynamicSitemaps
             uri.port,
             DynamicSitemaps.proxy_host,
             DynamicSitemaps.proxy_port
-          ).start do |http|
+          ).start(read_timeout: 500) do |http|
             http.get(uri.request_uri)
           end
         rescue Exception => e
